@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
+
+<configuration>
+    <property>
+        <name>spark.executor.heartbeatInterval</name>
+        <value>60000</value>
+    </property>
+    <property>
+        <name>hbase.rpc.timeout</name>
+        <value>6000000</value>
+    </property>
+    <property>
+        <name>hbase.client.operation.timeout</name>
+        <value>6000000</value>
+    </property>
+    <property>
+        <name>hbase.client.scanner.timeout.period</name>
+        <value>6000000</value>
+    </property>
+    <property>
+        <name>phoenix.query.timeoutMs</name>
+        <value>6000000</value>
+    </property>
+    <property>
+        <name>phoenix.query.keepAliveMs</name>
+        <value>6000000</value>
+    </property>
+    <property>
+        <name>hbase.client.ipc.pool.type</name>
+        <value>RoundRobinPool</value>
+    </property>
+    <property>
+        <name>hbase.client.ipc.pool.size</name>
+        <value>10</value>
+    </property>
+</configuration>
