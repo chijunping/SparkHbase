@@ -13,7 +13,7 @@ import org.apache.spark.sql.{DataFrame, SaveMode, SparkSession}
   * @ Date:  Created in 14:09 2018/9/22
   * @ Modified  By:
   */
-object PvSporttypeAndContenttype {
+object PvSParamtypeAndContenttype {
 
   //vpc网络
     val zkAddress = "hb-bp151dhf9a35tg4f4-002.hbase.rds.aliyuncs.com,hb-bp151dhf9a35tg4f4-001.hbase.rds.aliyuncs.com,hb-bp151dhf9a35tg4f4-003.hbase.rds.aliyuncs.com:2181";
@@ -28,7 +28,7 @@ object PvSporttypeAndContenttype {
       System.exit(1)
     }
     val timeStep: Int = args(0).toInt
-    val conf = new SparkConf().setAppName("PvSporttypeAndContenttype")
+    val conf = new SparkConf().setAppName("PvSParamtypeAndContenttype")
 //      .setMaster("local[8]")
     val ss = SparkSession.builder().config(conf).getOrCreate()
 
@@ -43,7 +43,7 @@ object PvSporttypeAndContenttype {
         s"""
            |SELECT '${newEndTime}' as ENDTIME,'${newStartTime}' as STARTTIME,PLATFORM,PARAM_TYPE as SPORT_TYPE,CONTENT_TYPE,COUNT(*) as FREQUENCY
            |FROM ZB8_CLICKLOG
-           |WHERE time>='${newStartTime}' AND time<'${newEndTime}' AND PARAM_TYPE in('basketball','football','other')
+           |WHERE time>='${newStartTime}' AND time<'${newEndTime}'
            |GROUP BY PLATFORM,PARAM_TYPE,CONTENT_TYPE
          """.stripMargin
       val phoenixDFInTime = ss.sql(sql) //.persist(StorageLevel.MEMORY_AND_DISK_SER)
