@@ -16,9 +16,9 @@ import org.apache.spark.sql.{DataFrame, SaveMode, SparkSession}
 object PvSporttypeAndContenttype {
 
   //vpc网络
-  val zkAddress = "hb-bp151dhf9a35tg4f4-002.hbase.rds.aliyuncs.com,hb-bp151dhf9a35tg4f4-001.hbase.rds.aliyuncs.com,hb-bp151dhf9a35tg4f4-003.hbase.rds.aliyuncs.com:2181";
+    val zkAddress = "hb-bp151dhf9a35tg4f4-002.hbase.rds.aliyuncs.com,hb-bp151dhf9a35tg4f4-001.hbase.rds.aliyuncs.com,hb-bp151dhf9a35tg4f4-003.hbase.rds.aliyuncs.com:2181";
   //经典网络
-  //  val zkAddress = "hb-proxy-pub-bp151dhf9a35tg4f4-002.hbase.rds.aliyuncs.com,hb-proxy-pub-bp151dhf9a35tg4f4-001.hbase.rds.aliyuncs.com,hb-proxy-pub-bp151dhf9a35tg4f4-003.hbase.rds.aliyuncs.com:2181";
+//  val zkAddress = "hb-proxy-pub-bp151dhf9a35tg4f4-002.hbase.rds.aliyuncs.com,hb-proxy-pub-bp151dhf9a35tg4f4-001.hbase.rds.aliyuncs.com,hb-proxy-pub-bp151dhf9a35tg4f4-003.hbase.rds.aliyuncs.com:2181";
   val phoenixJdbcUrl = "jdbc:phoenix:" + zkAddress
   PhoenixJDBCUtil.setPhoenixJDBCUrl("jdbc:phoenix:" + zkAddress)
 
@@ -29,9 +29,8 @@ object PvSporttypeAndContenttype {
     }
     val timeStep: Int = args(0).toInt
     val conf = new SparkConf().setAppName("PvSporttypeAndContenttype")
-    //      .setMaster("local[8]")
+//      .setMaster("local[8]")
     val ss = SparkSession.builder().config(conf).getOrCreate()
-    val sc = ss.sparkContext
 
     val newTimes: util.List[String] = getNewTime(timeStep)
     val newStartTime = newTimes.get(0)
@@ -44,10 +43,10 @@ object PvSporttypeAndContenttype {
         s"""
            |SELECT '${newEndTime}' as ENDTIME,'${newStartTime}' as STARTTIME,PLATFORM,PARAM_TYPE as SPORT_TYPE,CONTENT_TYPE,COUNT(*) as FREQUENCY
            |FROM ZB8_CLICKLOG
-           |WHERE "TIME">='${newStartTime}' AND time<'${newEndTime}' AND PARAM_TYPE in('basketball','football','other')
+           |WHERE time>='${newStartTime}' AND time<'${newEndTime}' AND PARAM_TYPE in('basketball','football','other')
            |GROUP BY PLATFORM,PARAM_TYPE,CONTENT_TYPE
          """.stripMargin
-      val phoenixDFInTime = ss.sql(sql)//.persist(StorageLevel.MEMORY_AND_DISK_SER)
+      val phoenixDFInTime = ss.sql(sql) //.persist(StorageLevel.MEMORY_AND_DISK_SER)
       //将结果存入hbase
       saveDF2Phoenix(phoenixDFInTime, "ZB8_STAT_SPORTTYPE_CONTENTTYPE", zkAddress)
       //存入最近计算时间

@@ -33,7 +33,6 @@ object PvContentLabels {
     val conf = new SparkConf().setAppName("PvContentLabels")
     //      .setMaster("local[8]")
     val ss = SparkSession.builder().config(conf).getOrCreate()
-    val sc = ss.sparkContext
 
     val newTimes: util.List[String] = getNewTime(timeStep)
     val newStartTime = newTimes.get(0)
@@ -46,7 +45,7 @@ object PvContentLabels {
         s"""
            |select CONTENT_LABEL from ZB8_CLICKLOG where time>='${newStartTime}' and time<'${newEndTime}' and CONTENT_LABEL is not null
          """.stripMargin
-      val phoenixDFInTime = ss.sql(sql)//.persist(StorageLevel.MEMORY_AND_DISK_SER)
+      val phoenixDFInTime = ss.sql(sql) //.persist(StorageLevel.MEMORY_AND_DISK_SER)
       phoenixDFInTime.rdd.map(row => {
         val CONTENT_LABEL: String = row.getAs[String]("CONTENT_LABEL")
         val TIME: String = row.getAs[String]("TIME")
