@@ -15,7 +15,7 @@ import org.apache.spark.{SparkConf, SparkContext}
   */
 object ZB8_SparksqlOnPhoenix {
 
-  val zkAddress = "hb-proxy-pub-bp151dhf9a35tg4f4-002.hbase.rds.aliyuncs.com,hb-proxy-pub-bp151dhf9a35tg4f4-001.hbase.rds.aliyuncs.com,hb-proxy-pub-bp151dhf9a35tg4f4-003.hbase.rds.aliyuncs.com:2181";
+  val zkAddress = "hb-proxy-pub-xxxxx-002.hbase.rds.aliyuncs.com,hb-proxy-pub-xxxxx-001.hbase.rds.aliyuncs.com,hb-proxy-pub-xxxxx-003.hbase.rds.aliyuncs.com:2181";
 
   def main(args: Array[String]): Unit = {
 

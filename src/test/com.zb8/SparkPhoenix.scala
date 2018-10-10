@@ -13,7 +13,7 @@ import org.apache.spark.{SparkConf, SparkContext}
   */
 object SparkPhoenix {
 
-  val zkAddress = "hb-proxy-pub-bp1987l1fy04etj46-002.hbase.rds.aliyuncs.com,hb-proxy-pub-bp1987l1fy04etj46-001.hbase.rds.aliyuncs.com,hb-proxy-pub-bp1987l1fy04etj46-003.hbase.rds.aliyuncs.com:2181"
+  val zkAddress = "hb-proxy-pub-xxxxx-002.hbase.rds.aliyuncs.com,hb-proxy-pub-xxxxx-001.hbase.rds.aliyuncs.com,hb-proxy-pub-xxxxx-003.hbase.rds.aliyuncs.com:2181"
 
   def main(args: Array[String]): Unit = {
 

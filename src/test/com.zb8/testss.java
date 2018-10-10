@@ -16,7 +16,7 @@ public class testss {
         System.out.println(newTime);
     }
 
-    static String phoenixJdbcUrl = "jdbc:phoenix:hb-proxy-pub-bp151dhf9a35tg4f4-002.hbase.rds.aliyuncs.com,hb-proxy-pub-bp151dhf9a35tg4f4-001.hbase.rds.aliyuncs.com,hb-proxy-pub-bp151dhf9a35tg4f4-003.hbase.rds.aliyuncs.com:2181";
+    static String phoenixJdbcUrl = "jdbc:phoenix:hb-proxy-pub-xxxxx-002.hbase.rds.aliyuncs.com,hb-proxy-pub-xxxxx-001.hbase.rds.aliyuncs.com,hb-proxy-pub-xxxxx-003.hbase.rds.aliyuncs.com:2181";
 
     private static List<String> getNewTime() {
         String sql_maxEndTime = "SELECT  ENDTIME \"maxEndTime\" FROM ZB8_STAT_LABEL ORDER BY ENDTIME DESC LIMIT 1";

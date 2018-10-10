@@ -20,7 +20,7 @@ import org.apache.spark.sql.types.{StringType, StructField, StructType}
   */
 object SparkHbase {
 
-  val zkAddress = "hb-proxy-pub-bp1987l1fy04etj46-002.hbase.rds.aliyuncs.com:2181,hb-proxy-pub-bp1987l1fy04etj46-001.hbase.rds.aliyuncs.com:2181,hb-proxy-pub-bp1987l1fy04etj46-003.hbase.rds.aliyuncs.com:2181"
+  val zkAddress = "hb-proxy-pub-xxxxx-002.hbase.rds.aliyuncs.com:2181,hb-proxy-pub-xxxxx-001.hbase.rds.aliyuncs.com:2181,hb-proxy-pub-xxxxx-003.hbase.rds.aliyuncs.com:2181"
   val table_input = "bigdata:click"
   val table_output = "bigdata:click_dev"
   val scan_row_start = "26_86108"

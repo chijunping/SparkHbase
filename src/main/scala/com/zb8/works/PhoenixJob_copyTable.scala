@@ -12,11 +12,11 @@ import org.apache.spark.sql.{DataFrame, SaveMode, SparkSession}
 object PhoenixJob_copyTable {
 
   //vpc网络
-  //val zkAddressSource = "hb-bp151dhf9a35tg4f4-002.hbase.rds.aliyuncs.com,hb-bp151dhf9a35tg4f4-001.hbase.rds.aliyuncs.com,hb-bp151dhf9a35tg4f4-003.hbase.rds.aliyuncs.com:2181"
-  //val zkAddressTarget = "hb-bp151dhf9a35tg4f4-002.hbase.rds.aliyuncs.com,hb-bp151dhf9a35tg4f4-001.hbase.rds.aliyuncs.com,hb-bp151dhf9a35tg4f4-003.hbase.rds.aliyuncs.com:2181"
+  //val zkAddressSource = "hb-xxxxx-002.hbase.rds.aliyuncs.com,hb-xxxxx-001.hbase.rds.aliyuncs.com,hb-xxxxx-003.hbase.rds.aliyuncs.com:2181"
+  //val zkAddressTarget = "hb-xxxxx-002.hbase.rds.aliyuncs.com,hb-xxxxx-001.hbase.rds.aliyuncs.com,hb-xxxxx-003.hbase.rds.aliyuncs.com:2181"
   //经典网络
-  val zkAddressSource = "hb-proxy-pub-bp151dhf9a35tg4f4-002.hbase.rds.aliyuncs.com,hb-proxy-pub-bp151dhf9a35tg4f4-001.hbase.rds.aliyuncs.com,hb-proxy-pub-bp151dhf9a35tg4f4-003.hbase.rds.aliyuncs.com:2181"
-  val zkAddressTarget = "hb-proxy-pub-bp151dhf9a35tg4f4-002.hbase.rds.aliyuncs.com,hb-proxy-pub-bp151dhf9a35tg4f4-001.hbase.rds.aliyuncs.com,hb-proxy-pub-bp151dhf9a35tg4f4-003.hbase.rds.aliyuncs.com:2181"
+  val zkAddressSource = "hb-proxy-pub-xxxxx-002.hbase.rds.aliyuncs.com,hb-proxy-pub-xxxxx-001.hbase.rds.aliyuncs.com,hb-proxy-pub-xxxxx-003.hbase.rds.aliyuncs.com:2181"
+  val zkAddressTarget = "hb-proxy-pub-xxxxx-002.hbase.rds.aliyuncs.com,hb-proxy-pub-xxxxx-001.hbase.rds.aliyuncs.com,hb-proxy-pub-xxxxx-003.hbase.rds.aliyuncs.com:2181"
 
   def main(args: Array[String]): Unit = {
     val conf = new SparkConf().setAppName("PhoenixJob_copyTable")
